@@ -1,0 +1,20 @@
+BEGIN
+SELECT COUNT(iTripId)
+ FROM trips 
+ WHERE tEndDate <= NOW() 
+ AND tEndDate>= date_add(NOW(), INTERVAL -nro_dias DAY)  GROUP BY iDriverId;
+END
+
+
+
+
+
+SUB QUERY
+
+
+SELECT parameters_job_rules.valueDefault 
+       FROM ranking 
+       INNER JOIN parameters_job_rules 
+       ON jobType = 10         -- 10 es el tipo de indentifacion de conductores
+       AND parameters_job_rules.value1 >= 5
+       AND parameters_job_rules.value2 <= 10 LIMIT 1;
